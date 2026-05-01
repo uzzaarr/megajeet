@@ -31,7 +31,6 @@ export default function FeaturedMarquee({ items, onOpen }: Props) {
         .marquee-track {
           animation: featured-marquee 50s linear infinite;
         }
-        .marquee-track:hover { animation-play-state: paused; }
         @media (prefers-reduced-motion: reduce) {
           .marquee-track { animation: none; }
         }
