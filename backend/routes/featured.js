@@ -33,7 +33,7 @@ async function buildOne(spec) {
   }
   if (!wallet) return out
 
-  const row = await getAllocation(wallet).catch(() => null)
+  const row = getAllocation(wallet)
   if (row) {
     out.allocation = {
       usdtAllocated: row.usdtAllocated,
