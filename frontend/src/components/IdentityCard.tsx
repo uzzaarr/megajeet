@@ -1,7 +1,6 @@
 import { Card } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import { ExternalLink } from 'lucide-react'
-import { Identity, shortAddr, megaExplorerAddr } from '@/lib/types'
+import { Identity, shortAddr } from '@/lib/types'
 
 type Props = {
   wallet: string | null
@@ -40,17 +39,8 @@ export default function IdentityCard({ wallet, identity }: Props) {
             )}
           </div>
           {wallet && (
-            <div className="mt-1 flex items-center gap-1 font-mono text-sm text-muted-foreground">
+            <div className="mt-1 font-mono text-sm text-muted-foreground">
               <span className="select-none">{shortAddr(wallet)}</span>
-              <a
-                href={megaExplorerAddr(wallet)}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex h-6 w-6 items-center justify-center rounded text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
-                aria-label="View on MegaETH explorer"
-              >
-                <ExternalLink className="h-3.5 w-3.5" />
-              </a>
             </div>
           )}
         </div>

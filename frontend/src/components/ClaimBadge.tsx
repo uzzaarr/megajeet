@@ -1,6 +1,6 @@
 import { Card } from '@/components/ui/card'
-import { Activity, Allocation, fmtMega, fmtTime, megaExplorerTx, shortAddr } from '@/lib/types'
-import { CheckCircle2, Clock, ExternalLink } from 'lucide-react'
+import { Activity, Allocation, fmtMega, fmtTime, shortAddr } from '@/lib/types'
+import { CheckCircle2, Clock } from 'lucide-react'
 
 type Props = {
   activity: Activity | null
@@ -57,14 +57,7 @@ export default function ClaimBadge({ activity, allocation, loading }: Props) {
               <span className="text-xs text-muted-foreground">From</span>
               <span className="font-mono text-xs select-none">{shortAddr(claim!.from)}</span>
               <span className="text-xs text-muted-foreground">·</span>
-              <a
-                href={megaExplorerTx(claim!.hash)}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-1 text-xs text-foreground hover:underline"
-              >
-                <span className="select-none">{shortAddr(claim!.hash)}</span> <ExternalLink className="h-3 w-3" />
-              </a>
+              <span className="font-mono text-xs select-none">{shortAddr(claim!.hash)}</span>
             </div>
           </div>
         </div>

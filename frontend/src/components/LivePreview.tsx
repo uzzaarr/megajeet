@@ -1,4 +1,4 @@
-import { ArrowUpRight, ExternalLink } from 'lucide-react'
+import { ArrowUpRight } from 'lucide-react'
 import { fmtUsd, fmtNumber, shortAddr } from '@/lib/types'
 
 export type Featured = {
@@ -88,11 +88,8 @@ export default function LivePreview({ item, loading, onOpen }: Props) {
         </div>
       </div>
 
-      <div className="mt-5 flex items-center justify-between text-xs text-muted-foreground">
+      <div className="mt-5 text-xs text-muted-foreground">
         <span className="font-mono select-none">{shortAddr(item.wallet)}</span>
-        <span className="inline-flex items-center gap-1 group-hover:text-foreground transition-colors">
-          click to open <ExternalLink className="h-3 w-3" />
-        </span>
       </div>
     </button>
   )

@@ -1,7 +1,7 @@
 import { Card } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import { Activity, Transfer, fmtMega, fmtTime, megaExplorerTx, shortAddr } from '@/lib/types'
-import { ArrowDownToLine, ArrowUpFromLine, ExternalLink } from 'lucide-react'
+import { Activity, Transfer, fmtMega, fmtTime, shortAddr } from '@/lib/types'
+import { ArrowDownToLine, ArrowUpFromLine } from 'lucide-react'
 import { useState } from 'react'
 
 type Props = {
@@ -95,15 +95,6 @@ function Row({ t, wallet }: { t: Transfer; wallet: string | null }) {
           <span>{isOut ? 'to' : 'from'} <span className="font-mono select-none">{shortAddr(counterparty)}</span></span>
         </div>
       </div>
-      <a
-        href={megaExplorerTx(t.hash)}
-        target="_blank"
-        rel="noreferrer"
-        className="shrink-0 text-muted-foreground hover:text-foreground"
-        aria-label="View on explorer"
-      >
-        <ExternalLink className="h-3.5 w-3.5" />
-      </a>
     </li>
   )
 }
