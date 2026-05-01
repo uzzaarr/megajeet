@@ -8,10 +8,9 @@
 //   refund_usdt        number
 
 const { DUNE_QUERY_ID, DUNE_API_KEY } = require("../config/megaeth")
-const REFRESH_MS = 6 * 60 * 60 * 1000 // 6h
 
 let cache = {
-  loadedAt: 0,
+  loaded: false,
   loading: null,
   rows: new Map(), // wallet (lowercase) -> row
   rawCount: 0,
@@ -85,7 +84,7 @@ async function loadSnapshot() {
     }
   }
   cache = {
-    loadedAt: Date.now(),
+    loaded: true,
     loading: null,
     rows: map,
     rawCount: totalRows,
@@ -96,9 +95,7 @@ async function loadSnapshot() {
 }
 
 async function getSnapshot() {
-  const now = Date.now()
-  const fresh = cache.loadedAt && now - cache.loadedAt < REFRESH_MS && !cache.error
-  if (fresh) return cache
+  if (cache.loaded) return cache
   if (cache.loading) return cache.loading
   cache.loading = loadSnapshot().finally(() => { cache.loading = null })
   return cache.loading
@@ -117,7 +114,7 @@ async function getAllocation(address) {
 
 function snapshotMeta() {
   return {
-    loadedAt: cache.loadedAt || null,
+    loaded: cache.loaded,
     rowCount: cache.rows.size,
     rawCount: cache.rawCount,
     executionEndedAt: cache.executionEndedAt || null,
