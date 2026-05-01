@@ -1,0 +1,8 @@
+{
+  "installCommand": "cd frontend && bun install && cd ../backend && bun install",
+  "buildCommand": "cd frontend && bun run build:client",
+  "outputDirectory": "frontend/dist/client",
+  "rewrites": [
+    { "source": "/api/:path*", "destination": "/api/handler" }
+  ]
+}
